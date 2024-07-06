@@ -6,6 +6,7 @@ import {
   Typography,
 } from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -49,6 +50,8 @@ export default function Hero() {
           <Button
             variant="contained"
             size="large"
+            component={Link}
+            href="/learn"
             className="rounded-full bg-gradient-to-r from-blue-400 to-yellow-300 font-bold normal-case"
           >
             Start!
