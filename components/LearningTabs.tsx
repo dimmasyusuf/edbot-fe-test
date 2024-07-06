@@ -5,61 +5,23 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import { Description, QuestionAnswer } from "@mui/icons-material";
-import ZoomSlider from "./ZoomSlider";
-
-interface TabPanelProps {
-  children?: React.ReactNode;
-  index: number;
-  value: number;
-}
-
-function CustomTabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 3 }} className="flex h-full">
-          {children}
-        </Box>
-      )}
-    </div>
-  );
-}
-
-function a11yProps(index: number) {
-  return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  };
-}
+import PassageTab from "./PassageTab";
+import { Stack } from "@mui/material";
 
 export default function LearningTabs() {
   const [value, setValue] = useState(0);
+
+  console.log("value", value);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
 
   return (
-    <Box>
-      <CustomTabPanel value={value} index={0}>
-        <ZoomSlider />
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={1}>
-        Item Two
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={2}>
-        Item Three
-      </CustomTabPanel>
+    <Stack direction="column" spacing={4}>
+      <PassageTab value={value} />
 
-      <Box className="fixed bottom-0 w-full">
+      <Box className="fixed bottom-0 z-50 w-full overflow-hidden">
         <Tabs
           value={value}
           onChange={handleChange}
@@ -74,7 +36,8 @@ export default function LearningTabs() {
             icon={<Description />}
             iconPosition="start"
             label="Passage"
-            {...a11yProps(0)}
+            id="tab-0"
+            aria-controls="tab-0"
             className="h-12 normal-case text-white"
             sx={{
               "&.Mui-selected": {
@@ -86,7 +49,8 @@ export default function LearningTabs() {
             icon={<QuestionAnswer />}
             iconPosition="start"
             label="Questions"
-            {...a11yProps(1)}
+            id="tab-1"
+            aria-controls="tab-1"
             className="h-12 normal-case text-white"
             sx={{
               "&.Mui-selected": {
@@ -96,6 +60,6 @@ export default function LearningTabs() {
           />
         </Tabs>
       </Box>
-    </Box>
+    </Stack>
   );
 }
