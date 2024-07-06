@@ -5,6 +5,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import { Description, QuestionAnswer } from "@mui/icons-material";
+import ZoomSlider from "./ZoomSlider";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -49,7 +50,7 @@ export default function LearningTabs() {
   return (
     <Box>
       <CustomTabPanel value={value} index={0}>
-        Item One
+        <ZoomSlider />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         Item Two
