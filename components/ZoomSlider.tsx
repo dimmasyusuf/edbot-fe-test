@@ -25,7 +25,7 @@ export default function ZoomSlider({
 
   return (
     <Stack direction="row" spacing={2} className="w-full items-center">
-      <IconButton onClick={handleDecrease}>
+      <IconButton onClick={handleDecrease} data-testid="decrease-button">
         <TextDecrease />
       </IconButton>
       <Slider
@@ -36,7 +36,7 @@ export default function ZoomSlider({
         marks
         onChange={handleSliderChange}
       />
-      <IconButton onClick={handleIncrease}>
+      <IconButton onClick={handleIncrease} data-testid="increase-button">
         <TextIncrease />
       </IconButton>
     </Stack>
