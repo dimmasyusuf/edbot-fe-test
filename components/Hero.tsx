@@ -1,3 +1,6 @@
+"use client";
+
+import { RootState } from "@/lib/redux/store";
 import {
   Button,
   Container,
@@ -7,8 +10,11 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
+import { useSelector } from "react-redux";
 
 export default function Hero() {
+  const progress = useSelector((state: RootState) => state.progress.progress);
+
   return (
     <Container
       sx={{ width: "100%" }}
@@ -42,7 +48,7 @@ export default function Hero() {
 
           <LinearProgress
             variant="determinate"
-            value={25}
+            value={progress}
             color="success"
             className="rounded-full p-1"
           />

@@ -18,6 +18,7 @@ export default function QuestionsTab(props: QuestionsTabProps) {
   const [selectedAnswer, setSelectedAnswer] = useState("");
   const [answerChecked, setAnswerChecked] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
+
   const { value, id, question, options, answer, onNextQuestion } = props;
 
   const handleAnswer = (option: string) => {
