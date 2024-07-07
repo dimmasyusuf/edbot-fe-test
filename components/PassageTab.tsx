@@ -10,13 +10,29 @@ interface PassageTabProps {
 
 export default function PassageTab(props: PassageTabProps) {
   const { value, passage } = props;
+  const [zoomValue, setZoomValue] = useState(1);
+
+  const getTypographyVariant = (zoom: number) => {
+    switch (zoom) {
+      case 1:
+        return "body1";
+      case 2:
+        return "h6";
+      case 3:
+        return "h5";
+      case 4:
+        return "h4";
+      default:
+        return "body1";
+    }
+  };
 
   return (
     <TabPanel value={value} index={0}>
       <Box className="mb-24">
         <Box className="relative bg-blue-100 px-4 py-4 sm:px-16 sm:py-8">
           <Box className="mx-auto max-w-screen-2xl">
-            <ZoomSlider />
+            <ZoomSlider zoomValue={zoomValue} onZoomChange={setZoomValue} />
           </Box>
         </Box>
 
@@ -26,7 +42,11 @@ export default function PassageTab(props: PassageTabProps) {
             borderTop={2}
             className="z-10 max-w-screen-2xl rounded-lg border-t-4 border-blue-400 bg-white p-4 shadow-md"
           >
-            <Typography variant="body1" component="h2" className="text-pretty">
+            <Typography
+              variant={getTypographyVariant(zoomValue)}
+              component="h2"
+              className="text-pretty"
+            >
               {passage}
             </Typography>
           </Box>

@@ -1,14 +1,42 @@
+"use client";
 import { TextDecrease, TextIncrease } from "@mui/icons-material";
 import { IconButton, Slider, Stack } from "@mui/material";
 
-export default function ZoomSlider() {
+interface ZoomSliderProps {
+  zoomValue: number;
+  onZoomChange: (value: number) => void;
+}
+
+export default function ZoomSlider({
+  zoomValue,
+  onZoomChange,
+}: ZoomSliderProps) {
+  const handleIncrease = () => {
+    onZoomChange(Math.min(zoomValue + 1, 4));
+  };
+
+  const handleDecrease = () => {
+    onZoomChange(Math.max(zoomValue - 1, 1));
+  };
+
+  const handleSliderChange = (event: Event, newValue: number | number[]) => {
+    onZoomChange(newValue as number);
+  };
+
   return (
     <Stack direction="row" spacing={2} className="w-full items-center">
-      <IconButton>
+      <IconButton onClick={handleDecrease}>
         <TextDecrease />
       </IconButton>
-      <Slider defaultValue={30} />
-      <IconButton>
+      <Slider
+        value={zoomValue}
+        step={1}
+        min={1}
+        max={4}
+        marks
+        onChange={handleSliderChange}
+      />
+      <IconButton onClick={handleIncrease}>
         <TextIncrease />
       </IconButton>
     </Stack>
