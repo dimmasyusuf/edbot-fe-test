@@ -11,13 +11,14 @@ interface QuestionsTabProps {
   question: string;
   options: string[];
   answer: string;
+  onNextQuestion: () => void;
 }
 
 export default function QuestionsTab(props: QuestionsTabProps) {
   const [selectedAnswer, setSelectedAnswer] = useState("");
   const [answerChecked, setAnswerChecked] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
-  const { value, id, question, options, answer } = props;
+  const { value, id, question, options, answer, onNextQuestion } = props;
 
   const handleAnswer = (option: string) => {
     setAnswerChecked(true);
@@ -96,6 +97,7 @@ export default function QuestionsTab(props: QuestionsTabProps) {
                         setIsCorrect(false);
                         setAnswerChecked(false);
                         setSelectedAnswer("");
+                        onNextQuestion();
                       }}
                       className={`w-full rounded-lg px-4 py-2 normal-case text-white ${
                         isCorrect ? "bg-green-500" : "bg-red-500"
