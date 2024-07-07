@@ -2,6 +2,7 @@ import { CloseRounded, InfoRounded } from "@mui/icons-material";
 import { AppBar, IconButton, LinearProgress, Toolbar } from "@mui/material";
 import Link from "next/link";
 import React from "react";
+import InfoModal from "./InfoModal";
 
 export default function ProgressAppBar() {
   return (
@@ -20,9 +21,7 @@ export default function ProgressAppBar() {
           value={25}
           className="w-full rounded-full bg-white p-2"
         />
-        <IconButton size="large" aria-label="Info">
-          <InfoRounded />
-        </IconButton>
+        <InfoModal />
       </Toolbar>
     </AppBar>
   );
