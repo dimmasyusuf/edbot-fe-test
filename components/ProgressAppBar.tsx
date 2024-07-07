@@ -1,6 +1,6 @@
 "use client";
 
-import { CloseRounded, InfoRounded } from "@mui/icons-material";
+import { CloseRounded } from "@mui/icons-material";
 import { AppBar, IconButton, LinearProgress, Toolbar } from "@mui/material";
 import Link from "next/link";
 import InfoModal from "./InfoModal";
@@ -9,8 +9,6 @@ import { RootState } from "@/lib/redux/store";
 
 export default function ProgressAppBar() {
   const progress = useSelector((state: RootState) => state.progress.progress);
-
-  console.log("progress", progress);
 
   return (
     <AppBar position="static" className="bg-amber-300 shadow-none">
