@@ -1,25 +1,24 @@
 "use client";
 
 import { useState } from "react";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import Box from "@mui/material/Box";
+import { Box, Tab, Tabs } from "@mui/material";
 import { Description, QuestionAnswer } from "@mui/icons-material";
 import PassageTab from "./PassageTab";
-import { Stack } from "@mui/material";
+import QuestionsTab from "./QuestionsTab";
 
 export default function LearningTabs() {
   const [value, setValue] = useState(0);
-
-  console.log("value", value);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
 
   return (
-    <Stack direction="column" spacing={4}>
-      <PassageTab value={value} />
+    <Box className="flex flex-col">
+      <>
+        <PassageTab value={value} />
+        <QuestionsTab value={value} />
+      </>
 
       <Box className="fixed bottom-0 z-50 w-full overflow-hidden">
         <Tabs
@@ -60,6 +59,6 @@ export default function LearningTabs() {
           />
         </Tabs>
       </Box>
-    </Stack>
+    </Box>
   );
 }
