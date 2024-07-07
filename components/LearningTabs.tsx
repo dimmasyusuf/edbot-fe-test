@@ -5,9 +5,14 @@ import { Box, Tab, Tabs } from "@mui/material";
 import { Description, QuestionAnswer } from "@mui/icons-material";
 import PassageTab from "./PassageTab";
 import QuestionsTab from "./QuestionsTab";
+import questions from "@/lib/data/question_data.json";
 
 export default function LearningTabs() {
   const [value, setValue] = useState(0);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+
+  const { question_id, question_data } = questions[currentQuestion];
+  const { question, options, answer, passage, passage_id } = question_data;
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -16,8 +21,14 @@ export default function LearningTabs() {
   return (
     <Box className="flex flex-col">
       <>
-        <PassageTab value={value} />
-        <QuestionsTab value={value} />
+        <PassageTab value={value} passage={passage} />
+        <QuestionsTab
+          value={value}
+          id={passage_id}
+          question={question}
+          options={options}
+          answer={answer}
+        />
       </>
 
       <Box className="fixed bottom-0 z-50 w-full overflow-hidden">

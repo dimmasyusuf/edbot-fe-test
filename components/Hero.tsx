@@ -51,7 +51,7 @@ export default function Hero() {
             variant="contained"
             size="large"
             component={Link}
-            href="/learn"
+            href="/learn/ebr"
             className="rounded-full bg-gradient-to-r from-blue-400 to-yellow-300 font-bold normal-case"
           >
             Start!

@@ -1,9 +1,16 @@
-import React from "react";
+import { useState } from "react";
 import TabPanel from "./ui/TabPanel";
 import ZoomSlider from "./ZoomSlider";
 import { Box, Typography } from "@mui/material";
 
-export default function PassageTab({ value }: { value: number }) {
+interface PassageTabProps {
+  value: number;
+  passage: string;
+}
+
+export default function PassageTab(props: PassageTabProps) {
+  const { value, passage } = props;
+
   return (
     <TabPanel value={value} index={0}>
       <Box className="mb-24">
@@ -20,12 +27,7 @@ export default function PassageTab({ value }: { value: number }) {
             className="z-10 max-w-screen-2xl rounded-lg border-t-4 border-blue-400 bg-white p-4 shadow-md"
           >
             <Typography variant="body1" component="h2" className="text-pretty">
-              My name is Lisa. I wake up at 7 o'clock every morning. I take a
-              shower and get dressed. Then, I have breakfast with my family.
-              After that, I go to school. I study English and math. I have lunch
-              at 12 o'clock. In the afternoon, I have art class. I go home at 4
-              o'clock. In the evening, I watch TV and do my homework. I go to
-              bed at 9 o'clock.
+              {passage}
             </Typography>
           </Box>
         </Box>
